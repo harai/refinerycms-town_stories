@@ -1,0 +1,21 @@
+nb:
+  plugins:
+    town_stories:
+      title: Town Stories
+  admin:
+    town_stories:
+      actions:
+        create_new: Lag en ny Town Story
+        reorder: Endre rekkefølgen på Town Stories
+        reorder_done: Ferdig å endre rekkefølgen Town Stories
+      records:
+        title: Town Stories
+        sorry_no_results: Beklager! Vi fant ikke noen resultater.
+        no_items_yet: Det er ingen Town Stories enda. Klikk på "Lag en ny Town Story" for å legge til din første town story.
+      town_story:
+        view_live_html: Vis hvordan denne town story ser ut offentlig <br/><em>(åpner i et nytt vindu)</em>
+        edit: Rediger denne town story
+        delete: Fjern denne town story permanent
+  town_stories:
+    show:
+      other: Andre Town Stories

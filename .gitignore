@@ -1,0 +1,37 @@
+# Mac
+.DS_Store
+
+# Windows
+Thumbs.db
+
+# NetBeans
+nbproject
+
+# Eclipse
+.project
+
+# Redcar
+.redcar
+
+# Rubinius
+*.rbc
+
+# Vim
+*.swp
+*.swo
+
+# RubyMine
+.idea
+
+# E-texteditor
+.eprj
+
+# Backup
+*~
+
+# Capybara Bug
+capybara-*html
+
+#rvm
+.rvmrc
+.rvmrc.*

@@ -1,0 +1,27 @@
+<% content_for :body_content_title do %>
+  <%= @town_story.dummy %>
+<% end %>
+
+<% content_for :body_content_left do %>
+  <section>
+    <h1>Dummy</h1>
+    <p>
+      <%=raw @town_story.dummy %>
+    </p>
+  </section>
+<% end %>
+
+<% content_for :body_content_right do %>
+  <aside>
+    <h2><%= t('.other') %></h2>
+    <ul id="town_stories">
+      <% @town_stories.each do |town_story| %>
+        <li>
+          <%= link_to town_story.dummy, town_story_path(town_story) %>
+        </li>
+      <% end %>
+    </ul>
+  </aside>
+<% end %>
+
+<%= render :partial => "/shared/content_page" %>

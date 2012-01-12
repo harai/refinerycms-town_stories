@@ -1,0 +1,25 @@
+en:
+  shared:
+    admin:
+      image_picker:
+        image: image
+  plugins:
+    town_stories:
+      title: Town Stories
+  admin:
+    town_stories:
+      actions:
+        create_new: Add New Town Story
+        reorder: Reorder Town Stories
+        reorder_done: Done Reordering Town Stories
+      records:
+        title: Town Stories
+        sorry_no_results: Sorry! There are no results found.
+        no_items_yet: There are no Town Stories yet. Click "Add New Town Story" to add your first town story.
+      town_story:
+        view_live_html: View this town story live <br/><em>(opens in a new window)</em>
+        edit: Edit this town story
+        delete: Remove this town story forever
+  town_stories:
+    show:
+      other: Other Town Stories

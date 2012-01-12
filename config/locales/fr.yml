@@ -1,0 +1,25 @@
+fr:
+  shared:
+    admin:
+      image_picker:
+        image: image
+  plugins:
+    town_stories:
+      title: Town Stories
+  admin:
+    town_stories:
+      actions:
+        create_new: Créer un(e) nouve(au/l/lle) Town Story
+        reorder: Réordonner les Town Stories
+        reorder_done: Fin de réordonnancement des Town Stories
+      records:
+        title: Town Stories
+        sorry_no_results: "Désolé ! Aucun résultat."
+        no_items_yet: 'Il n''y a actuellement aucun(e) Town Story. Cliquer sur "Créer un(e) nouve(au/l/lle) Town Story" pour créer votre premi(er/ère) town story.'
+      town_story:
+        view_live_html: Voir ce(t/tte) town story <br/><em>(Ouvre une nouvelle fenêtre)</em>
+        edit: Modifier ce(t/tte) town story
+        delete: Supprimer définitivement ce(t/tte) town story
+  town_stories:
+    show:
+      other: Autres Town Stories

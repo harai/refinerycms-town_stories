@@ -1,0 +1,25 @@
+lolcat:
+  shared:
+    admin:
+      image_picker:
+        image: IMAGE
+  plugins:
+    town_stories:
+      title: Town Stories
+  admin:
+    town_stories:
+      actions:
+        create_new: CREATE NEW Town Story
+        reorder: REORDR Town Stories
+        reorder_done: DUN REORDERIN Town Stories
+      records:
+        title: Town Stories
+        sorry_no_results: SRY! THAR R NO RESULTS FINDZ.
+        no_items_yet: THAR R NO Town Stories YET. CLICK "CREATE NEW Town Story" 2 ADD UR FURST town story.
+      town_story:
+        view_live_html: VIEW DIS town story LIV <BR/><EM>(OPENS IN NEW WINDOW)</EM>
+        edit: EDIT DIS town story
+        delete: REMOOV DIS town story FOREVR
+  town_stories:
+    show:
+      other: OTHR Town Stories

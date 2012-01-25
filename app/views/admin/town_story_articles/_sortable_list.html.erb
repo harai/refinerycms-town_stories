@@ -1,5 +1,5 @@
 <ul id='sortable_list'>
-  <%= render :partial => 'town_story', :collection => @town_stories %>
+  <%= render :partial => 'town_story_article', :collection => @items, :as => :item %>
 </ul>
 <%= render :partial => "/shared/admin/sortable_list",
             :locals => {

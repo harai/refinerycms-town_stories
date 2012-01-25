@@ -1,8 +1,8 @@
 <% content_for :body_content_left do %>
-  <ul id="town_stories">
-    <% @town_stories.each do |town_story| %>
+  <ul id="town_story_articles">
+    <% @items.each do |item| %>
       <li>
-        <%= link_to town_story.dummy, town_story_path(town_story) %>
+        <%= link_to item.title, town_story_article_path(item) %>
       </li>
     <% end %>
   </ul>

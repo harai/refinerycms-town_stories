@@ -15,14 +15,17 @@ module Refinery
         app.middleware.insert_after ::ActionDispatch::Static, ::ActionDispatch::Static, "#{root}/public"
       end
 
+      config.autoload_paths << File.expand_path('../', __FILE__)
+
       config.after_initialize do
+
         Refinery::Plugin.register do |plugin|
-          plugin.name = "town_stories"
+          plugin.name = "town_story_articles"
           plugin.pathname = root
-          plugin.activity = {
-            :class => TownStory,
-            :title => 'dummy'
-          }
+          # plugin.activity = {
+            # :class => TownStoryArticle,
+            # :title => 'title'
+          # }
         end
       end
     end

@@ -18,14 +18,14 @@ describe TownStory do
 
   context "validations" do
     
-    it "rejects empty dummy" do
-      TownStory.new(@valid_attributes.merge(:dummy => "")).should_not be_valid
-    end
-
-    it "rejects non unique dummy" do
-      # as one gets created before each spec by reset_town_story
-      TownStory.new(@valid_attributes).should_not be_valid
-    end
+    # it "rejects empty dummy" do
+      # TownStory.new(@valid_attributes.merge(:dummy => "")).should_not be_valid
+    # end
+# 
+    # it "rejects non unique dummy" do
+      # # as one gets created before each spec by reset_town_story
+      # TownStory.new(@valid_attributes).should_not be_valid
+    # end
     
   end
 

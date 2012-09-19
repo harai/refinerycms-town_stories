@@ -1,4 +1,6 @@
 require 'refinerycms-base'
+require 'mongoid'
+require File.expand_path('../mongo_form_helpers', __FILE__)
 
 module Refinery
   module TownStories

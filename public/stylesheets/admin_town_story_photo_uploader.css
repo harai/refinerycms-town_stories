@@ -1,0 +1,19 @@
+.photos {
+    background-color: #eee;
+    width: 400px;
+    padding: 5px;
+    overflow: hidden;
+}
+
+.photoframe {
+    height: 100px;
+    width: 100px;
+    margin: 5px;
+    background-color: white;
+    float: left;
+}
+
+.uploader_text {
+    font-size: 13px;
+    font-weight: bold;
+}

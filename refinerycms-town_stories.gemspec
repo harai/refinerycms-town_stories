@@ -10,6 +10,11 @@ Gem::Specification.new do |s|
 
   s.add_dependency("mongoid", ["~> 2.2"])
   s.add_dependency("refinerycms", ["~> 1.0.9"])
+  s.add_dependency("carrierwave", ["~> 0.5"])
+  s.add_dependency("rmagick")
+  s.add_dependency("fog", ["~> 1.3.1"])
+  s.add_dependency("uuidtools", ["~> 2.1.2"])
+  
 
   s.add_development_dependency("rspec", ["~> 2.6"])
 end

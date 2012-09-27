@@ -12,19 +12,24 @@
         <%= f.text_area :text, :class => 'widest' -%>
     </div>
 
-    <div class="photos">
+    <div class='field'>
+        <%= f.label :photos -%>
         <%= f.mongo_fields_for :photos do |p| %>
-            <% p.object.each_with_index do |id, i| %>
-                <div class="photoframe">
-                    <%= p.hidden_field i %>
-                    <%= image_tag(PhotoUploader.url(id, :t), :class => 'photo_thumb', alt: '') %>
+            <div id="town_story_article_photos" object_name="<%= p.object_name %>">
+                <div id="dropping_area" class="photoframe">
+                    <div class="decoration">
+                        <div class="decoration2">
+                            <span class="uploader_text">Drop JPEG Files Here</span>
+                        </div>
+                    </div>
                 </div>
-            <% end -%>
+            </div>
+            <%
+                @photos = p.object.collect do |photo|
+                    { id: photo, url: PhotoUploader.url(photo, :t) }
+                end.to_json
+            %>
         <% end -%>
-        
-        <div id="uploader" class="uploader photoframe">
-            <span class="uploader_text">Drop JPEG Files Here</span>
-        </div>
     </div>
 
     <%= render :partial => "/shared/admin/form_actions",
@@ -43,7 +48,11 @@
     <%= javascript_include_tag 'admin_town_story_photo_uploader' %>
     <script type="text/javascript">
         $(document).ready(function () {
-            init('<%= upload_photo_admin_town_story_articles_path %>', '<%= form_authenticity_token %>');
+            init({
+                url: '<%= upload_photo_admin_town_story_articles_path %>',
+                auth: '<%= form_authenticity_token %>',
+                photos: <%= raw @photos %>,
+            });
         });
     </script>
 <% end %>

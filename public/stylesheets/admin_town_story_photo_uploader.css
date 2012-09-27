@@ -1,19 +1,74 @@
-.photos {
+#town_story_article_photos {
     background-color: #eee;
-    width: 400px;
     padding: 5px;
     overflow: hidden;
 }
 
-.photoframe {
+#town_story_article_photos .photoframe {
     height: 100px;
     width: 100px;
     margin: 5px;
     background-color: white;
     float: left;
+    position: relative;
 }
 
-.uploader_text {
+#town_story_article_photos .photo_remove_button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: black;
+    opacity: 0.8;
+    color: white;
+    font-weight: bold;
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    z-index: 1;
+    cursor: pointer;
+}
+
+#town_story_article_photos #dropping_area .uploader_text {
     font-size: 13px;
     font-weight: bold;
+}
+
+#town_story_article_photos #dropping_area {
+}
+
+#town_story_article_photos #dropping_area.hover {
+    background-color: #ff8;
+}
+
+/*
+ * workaround: As of Firefox 15, the height of table-celled element is mistakenly calculated
+ * if it has border or padding.
+ */
+#town_story_article_photos #dropping_area .decoration {
+    width: 90px;
+    height: 90px;
+    padding: 2px;
+    border-width: 3px;
+    border-style: dashed;
+    border-color: #777;
+}
+#town_story_article_photos #dropping_area .decoration2 {
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+    width: 90px;
+    height: 90px;
+}
+
+#town_story_article_photos .progress {
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+    width: 100px;
+    height: 100px;
+}
+
+#town_story_article_photos .uploading, #town_story_article_photos .percent {
+    font-weight: bold;
+    font-size: 13px;
 }

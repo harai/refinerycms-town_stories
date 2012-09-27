@@ -18,6 +18,11 @@ module Admin
       @item = TownStoryArticle.find_by_id(params[:id])
     end
     
-    protected :find_item
+    def update_item(attr)
+      attr[:photos] = [] unless attr.include?(:photos)
+      @item.update_attributes attr
+    end
+    
+    protected :find_item, :update_item
   end
 end

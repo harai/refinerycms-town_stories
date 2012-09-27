@@ -70,7 +70,7 @@ module Refinery
 
           define_method :update do
             redirect_to_url = send options[:redirect_to_url]
-            if @item.update_attributes params[singular_name]
+            if update_item params[singular_name]
               (request.xhr? ? flash.now : flash).notice =
                 t('refinery.crudify.updated', :what => "'" + @item[options[:title_attribute]] + "'")
 
@@ -125,13 +125,16 @@ module Refinery
 
             items.paginate paging_options # TODO fix?
           end
-  
+
+          define_method :update_item do |item|
+            @item.update_attributes item
+          end
+
           # define_method(:search_all_items) do
             # find_all_items(options[:search_conditions]).with_query(params[:search])
           # end
   
-          protected :find_item, :find_all_items, :paginate_all_items
-          # protected :find_item, :find_all_items, :paginate_all_items, :search_all_items
+          protected :find_item, :find_all_items, :paginate_all_items, :update_item
   
           define_method :index do
             items = find_all_items

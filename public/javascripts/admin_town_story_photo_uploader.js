@@ -1,6 +1,4 @@
 var init = function (args) {
-    console.info(args);
-    
     var dropArea = $("#dropping_area");
 
     var uploader = new plupload.Uploader({
@@ -16,10 +14,6 @@ var init = function (args) {
         },
         drop_element : "dropping_area",
         autostart : true,
-    });
-
-    uploader.bind('Init', function (up, params) {
-        console.info("Plupload: Current runtime: " + params.runtime);
     });
 
     uploader.init();

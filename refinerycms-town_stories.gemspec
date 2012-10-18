@@ -16,5 +16,5 @@ Gem::Specification.new do |s|
   s.add_dependency("uuidtools", ["~> 2.1.2"])
   
 
-  s.add_development_dependency("rspec", ["~> 2.6"])
+  s.add_development_dependency("rspec")
 end

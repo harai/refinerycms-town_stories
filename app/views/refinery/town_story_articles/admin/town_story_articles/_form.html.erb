@@ -1,0 +1,62 @@
+<%= form_for [ :admin, @item ] do |f| -%>
+    <%= render :partial => "/shared/admin/error_messages",
+        :locals => { :object => @item, :include_object_name => true } %>
+  
+    <div class='field'>
+        <%= f.label :title -%>
+        <%= f.text_field :title, :class => 'larger widest' -%>
+    </div>
+
+    <div class='field'>
+        <%= f.label :text -%>
+        <%= f.text_area :text, :class => 'widest' -%>
+    </div>
+
+    <div class='field'>
+        <%= f.label :photos -%>
+        <%= f.mongo_fields_for :photos do |p| %>
+            <div id="town_story_article_photos" object_name="<%= p.object_name %>">
+                <div id="dropping_area" class="photoframe">
+                    <div class="decoration">
+                        <div class="decoration2">
+                            <span class="uploader_text">Drop JPEG Files Here</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <%
+                @photos = p.object.collect do |photo|
+                    { id: photo, url: ::Refinery::TownStories::PhotoUploader.url(photo, :t) }
+                end.to_json
+            %>
+        <% end -%>
+    </div>
+
+    <%= render :partial => "/shared/admin/form_actions",
+        :locals => {
+            :f => f,
+            :continue_editing => false,
+            :delete_url => eval("refinery.town_story_articles_admin_#{f.object_name}_path(#{f.object.id.to_s.inspect})"),
+            :delete_title => t('delete', :scope => 'refinery.town_story_articles.admin.town_story_articles.town_story_article'),
+            :delete_confirmation => t('message', :scope => 'refinery.admin.delete', :title => @item.title)
+    } %>
+<% end -%>
+
+<% content_for :javascripts do %>
+    <%= javascript_include_tag 'plupload/1.5.2/plupload' %>
+    <%= javascript_include_tag 'plupload/1.5.2/plupload.html5.js' %>
+    <%= javascript_include_tag 'admin_town_story_photo_uploader' %>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            init({
+                url: '<%= refinery.upload_photo_town_story_articles_admin_town_story_articles_path %>',
+                auth: '<%= form_authenticity_token %>',
+                photos: <%= raw @photos %>,
+            });
+        });
+    </script>
+<% end %>
+
+<% content_for :stylesheets do %>
+    <%= stylesheet_link_tag "admin_town_story_photo_uploader" %>
+<% end %>

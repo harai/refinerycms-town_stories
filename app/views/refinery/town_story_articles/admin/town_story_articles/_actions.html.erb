@@ -1,0 +1,25 @@
+<ul>
+  <% if ::Refinery::TownStoryArticles::Admin::TownStoryArticlesController.searchable? %>
+    <li>
+      <%= render '/refinery/admin/search', :url => refinery.town_story_articles_admin_town_story_articles_path %>
+    </li>
+  <% end %>
+  <li>
+    <%= link_to t('.create_new'), refinery.new_town_story_articles_admin_town_story_article_path,
+                 :class => "add_icon" %>
+  </li>
+<% if !searching? && ::Refinery::TownStoryArticles::Admin::TownStoryArticlesController.sortable? && ::Refinery::TownStoryArticles::TownStoryArticle.any? %>
+  <li>
+    <%= link_to t('.reorder', :what => "Town Story Articles"),
+                 refinery.town_story_articles_admin_town_story_articles_path,
+                 :id => "reorder_action",
+                 :class => "reorder_icon" %>
+
+    <%= link_to t('.reorder_done', :what => "Town Story Articles"),
+                 refinery.town_story_articles_admin_town_story_articles_path,
+                 :id => "reorder_action_done",
+                 :style => "display: none;",
+                 :class => "reorder_icon" %>
+  </li>
+<% end %>
+</ul>

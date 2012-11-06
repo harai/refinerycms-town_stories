@@ -1,11 +1,19 @@
-::Refinery::Application.routes.draw do
-  resources :town_story_articles, :only => [:index, :show]
+Refinery::Core::Engine.routes.append do
 
-  scope :path => 'refinery', :as => 'admin', :module => 'admin' do
+  # Frontend routes
+  namespace :town_story_articles do
+    resources :town_story_articles, :path => '', :only => [:index, :show]
+  end
+
+  # Admin routes
+  namespace :town_story_articles, :path => '' do
+    namespace :admin, :path => 'refinery' do
     resources :town_story_articles, :except => :show do
       collection do
         post :upload_photo
       end
     end
   end
+  end
+
 end

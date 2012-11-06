@@ -1,25 +1,45 @@
 en:
-  shared:
-    admin:
-      image_picker:
-        image: image
-  plugins:
-    town_story_articles:
-      title: Town Story Articles
-  admin:
-    town_story_articles:
-      actions:
-        create_new: Add New Town Story Article
-        reorder: Reorder Town Story Articles
-        reorder_done: Done Reordering Town Story Articles
-      records:
+  refinery:
+    plugins:
+      town_story_articles:
         title: Town Story Articles
-        sorry_no_results: Sorry! There are no results found.
-        no_items_yet: There are no Town Story Articles yet. Click "Add New Town Story Article" to add your first town story.
-      town_story_article:
-        view_live_html: View this town story live <br/><em>(opens in a new window)</em>
-        edit: Edit this town story
-        delete: Remove this town story forever
-  town_story_articles:
-    show:
-      other: Other Town Story Articles
+      town_stories:
+        title: Town Stories
+    town_story_articles:
+      admin:
+        town_story_articles:
+          actions:
+            create_new: Add New Town Story Article
+            reorder: Reorder Town Story Articles
+            reorder_done: Done Reordering Town Story Articles
+          records:
+            title: Town Story Articles
+            sorry_no_results: Sorry! There are no results found.
+            no_items_yet: There are no Town Story Articles yet. Click "Add New Town
+              Story Article" to add your first town story article.
+          town_story_article:
+            view_live_html: View this town story article live <br/><em>(opens in a
+              new window)</em>
+            edit: Edit this town story article
+            delete: Remove this town story article forever
+      town_story_articles:
+        show:
+          other: Other Town Story Articles
+    town_stories:
+      admin:
+        town_stories:
+          actions:
+            create_new: Add New Town Story
+            reorder: Reorder Town Stories
+            reorder_done: Done Reordering Town Stories
+          records:
+            title: Town Stories
+            sorry_no_results: Sorry! There are no results found.
+            no_items_yet: There are no Town Stories yet. Click "Add New Town Story" to add your first town story.
+          town_story:
+            view_live_html: View this town story live <br/><em>(opens in a new window)</em>
+            edit: Edit this town story
+            delete: Remove this town story forever
+      town_stories:
+        show:
+          other: Other Town Stories

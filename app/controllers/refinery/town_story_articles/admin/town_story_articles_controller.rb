@@ -4,7 +4,7 @@ module Refinery
       class TownStoryArticlesController < ::Refinery::AdminController
         include ::Refinery::TownStories::MongoidCrud
     
-        mongoid_crudify :town_story_article, paging: false
+        mongoid_crudify '/refinery/town_story_articles/town_story_article', paging: false
     
         def upload_photo
           uploader = ::Refinery::TownStories::PhotoUploader.new
@@ -17,7 +17,7 @@ module Refinery
         end
         
         def find_item
-          @item = TownStoryArticle.find_by_id(params[:id])
+          @item = ::Refinery::TownStoryArticles::TownStoryArticle.find_by_id(params[:id])
         end
         
         def update_item(attr)

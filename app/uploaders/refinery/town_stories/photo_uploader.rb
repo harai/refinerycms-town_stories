@@ -38,7 +38,7 @@ module Refinery
     
       def self.url(id, type = nil)
         type_str = type ? type.to_s + '_' : ''
-        "#{fog_host}/#{type_str}#{id}.jpg"
+        "#{asset_host}/#{type_str}#{id}.jpg"
       end
     end
   end

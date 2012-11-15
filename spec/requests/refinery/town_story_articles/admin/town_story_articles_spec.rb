@@ -7,7 +7,7 @@ describe Refinery do
     describe 'Admin' do
       describe 'town_story_articles', type: :request, js: true do
         before(:each) do
-          TownStoryArticle.destroy_all
+          ::Refinery::TownStoryArticles::TownStoryArticle.destroy_all
           @user = FactoryGirl.create :refinery_user
           login_as @user
         end
@@ -32,6 +32,7 @@ describe Refinery do
         
           it 'can edit the existing article' do
             click_on 'Application_edit'
+            page.driver.render "tmp/screenshot.png"
             page.should have_field('Title', with: 'Sample Article')
             page.should have_field('Text', with: 'Sample text.')
             page.should have_xpath('id(\'town_story_article_photos\')/div[2]/img')

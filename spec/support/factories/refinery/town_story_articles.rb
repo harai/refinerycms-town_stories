@@ -1,5 +1,5 @@
 FactoryGirl.define do
-  factory :town_story_article, :class => ::Refinery::TownStoryArticles::TownStoryArticle do |a|
+  factory :town_story_article, class: ::Refinery::TownStoryArticles::TownStoryArticle do |a|
     a.title 'Sample Article'
   end
 

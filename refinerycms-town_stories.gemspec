@@ -12,6 +12,7 @@ Gem::Specification.new do |s|
 
   s.add_dependency('refinerycms-core', '~> 2.0.8')
   s.add_dependency("mongoid")
+  s.add_dependency("bson_ext")
   s.add_dependency("carrierwave")
   s.add_dependency("rmagick")
   s.add_dependency("fog")
@@ -19,5 +20,6 @@ Gem::Specification.new do |s|
   
 
   s.add_development_dependency("rspec")
-  s.add_development_dependency('refinerycms-testing', '~> 2.0.8')
+  s.add_development_dependency("factory_girl")
+  s.add_development_dependency("capybara")
 end

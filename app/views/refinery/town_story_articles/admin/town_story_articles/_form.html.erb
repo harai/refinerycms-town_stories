@@ -16,7 +16,9 @@
         <%= f.label :photos -%>
         <%= f.mongo_fields_for :photos do |p| %>
             <div id="town_story_article_photos" object_name="<%= p.object_name %>">
-                <div id="dropping_area" class="photoframe">
+                <div id="dropping_area" class="photoframe"
+                    data-url="<%= refinery.upload_photo_town_story_articles_admin_town_story_articles_path %>">
+
                     <div class="decoration">
                         <div class="decoration2">
                             <span class="uploader_text">Drop JPEG Files Here</span>
@@ -43,13 +45,11 @@
 <% end -%>
 
 <% content_for :javascripts do %>
-    <%= javascript_include_tag 'plupload/1.5.2/plupload' %>
-    <%= javascript_include_tag 'plupload/1.5.2/plupload.html5.js' %>
+    <%= javascript_include_tag 'jquery-fileupload/basic' %>
     <%= javascript_include_tag 'admin_town_story_photo_uploader' %>
     <script type="text/javascript">
         $(document).ready(function () {
             init({
-                url: '<%= refinery.upload_photo_town_story_articles_admin_town_story_articles_path %>',
                 auth: '<%= form_authenticity_token %>',
                 photos: <%= raw @photos %>,
             });

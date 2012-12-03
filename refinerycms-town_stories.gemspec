@@ -17,6 +17,7 @@ Gem::Specification.new do |s|
   s.add_dependency("rmagick")
   s.add_dependency("fog")
   s.add_dependency("uuidtools")
+  s.add_dependency("jquery-fileupload-rails")
   
 
   s.add_development_dependency("rspec")

@@ -1,41 +1,9 @@
 var init = function (args) {
-    var dropArea = $("#dropping_area");
-
-    var uploader = new plupload.Uploader({
-        runtimes : 'html5',
-        max_file_size : '10mb',
-        url : args.url,
-        filters : [ { title : "Image files", extensions : "jpg" } ],
-        resize : { width : 1200, height : 1200, quality : 90 },
-        multipart : true,
-        multipart_params : {
-            _http_accept : 'application/javascript',
-            authenticity_token : args.auth,
-        },
-        drop_element : "dropping_area",
-        autostart : true,
-    });
-
-    uploader.init();
-
-    uploader.bind('FilesAdded', function (up, files) {
-        $.each(files, function (i, file) {
-            console.debug("FilesAdded: " + file.id);
-            console.debug(file);
-            var upload = $('<span class="uploading">Uploading...</span>');
-            var percent = $('<span class="percent">0%</span>');
-            var progress = $('<div class="progress"></div>').append(upload, "<br />", percent);
-            var frame = $('<div class="photoframe"></div>').attr("id", file.id);
-            dropArea.before(frame.append(progress));
-        });
-        uploader.start();
-    });
-
+    var map = function (fn, arr) { return $(arr).map(function (i, e) { return fn(e, i); }); };
+    var each = function (fn, arr) { $(arr).each(function (i, e) { fn(e, i); }); return arr; };
+    var grep = function (fn, arr) { return $.grep(arr, fn); };
+    
     var objectName = $("#town_story_article_photos").attr("object_name");
-
-    var getFileElement = function (file) {
-        return $("#" + file.id);
-    };
 
     var setCompleted = function (photoframe, id, url) {
         photoframe.html("");
@@ -61,21 +29,66 @@ var init = function (args) {
         return photoframe;
     };
 
-    uploader.bind('UploadProgress', function (up, file) {
-        console.debug("UploadProgress: " + file.id);
-        getFileElement(file).find(".percent").html(file.percent + "%");
-    });
+    var count = (function () {
+        var i = 0;
+        
+        return function () {
+            return ++i;
+        };
+    })();
 
-    // uploader.bind('Error', function (up, err) {
-        // $('#filelist').append("Error: " + err.code + ", Message: " + err.message +
-            // (err.file ? ", File: " + err.file.name : ""));
-    // });
+    $('#dropping_area').fileupload({
+        formData: {
+            _http_accept : 'application/javascript',
+            authenticity_token : args.auth
+        },
+        process: [
+            {
+                action: 'load',
+                fileTypes: /^image\/jpeg$/,
+                maxFileSize: 20000000 // 20MB
+            },
+            {
+                action: 'resize',
+                maxWidth: 1200,
+                maxHeight: 1200
+            },
+            {
+                action: 'save'
+            }
+        ],
+        add: function (e, data) {
+            var file = data.files[0];
+            
+            if (! /\.jpg$/i.test(file.name)) {
+                return ;
+            }
 
-    uploader.bind('FileUploaded', function (up, file, res) {
-        var photo = $.parseJSON(res.response);
-        setCompleted(getFileElement(file), photo.id, photo.thumb_url);
+            var id = "__fileupload_item_" + count();
+            var upload = $('<span class="uploading">Uploading...</span>');
+            var percent = $('<span class="percent">0%</span>');
+            var progress = $('<div class="progress"></div>').append(upload, "<br />", percent);
+            var frame = $('<div class="photoframe"></div>').attr("id", id);
+            dropArea.before(frame.append(progress));
+            data.context = id;
+
+            data.submit();
+        },
+        progress: function (e, data) {
+            var id = data.context;
+            var progress = parseInt(data.loaded / data.total * 100, 10);
+            $('#' + id).find(".percent").html(progress + "%");
+        },
+        done: function (e, data) {
+            var id = data.context;
+            var photo = data.result;
+            setCompleted($('#' + id), photo.id, photo.thumb_url);
+        },
+        paramName: 'file'
     });
     
+    var dropArea = $("#dropping_area");
+
     dropArea.bind("dragover", function (e) {
         e.preventDefault();
         $(this).addClass('hover');

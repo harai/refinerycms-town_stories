@@ -32,7 +32,6 @@ describe Refinery do
         
           it 'can edit the existing article' do
             click_on 'Application_edit'
-            page.driver.render "tmp/screenshot.png"
             page.should have_field('Title', with: 'Sample Article')
             page.should have_field('Text', with: 'Sample text.')
             page.should have_xpath('id(\'town_story_article_photos\')/div[2]/img')

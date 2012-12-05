@@ -6,7 +6,7 @@ describe Refinery do
   describe 'TownStoryArticles' do
     describe 'Admin' do
       describe 'town_story_articles', type: :request, js: true do
-        before(:each) do
+        before :each do
           ::Refinery::TownStoryArticles::TownStoryArticle.destroy_all
           @user = FactoryGirl.create :refinery_user
           login_as @user
@@ -34,7 +34,7 @@ describe Refinery do
             click_on 'Application_edit'
             page.should have_field('Title', with: 'Sample Article')
             page.should have_field('Text', with: 'Sample text.')
-            page.should have_xpath('id(\'town_story_article_photos\')/div[2]/img')
+            find(:xpath, "id(\'town_story_article_photos\')/div[2]").should have_xpath('./img')
           end
         end
       
@@ -71,6 +71,28 @@ describe Refinery do
             click_on 'Application_edit'
             page.should have_field('Title', with: 'Hoge Slope')
             page.should have_field('Text', with: 'Too steep.')
+          end
+      
+          it 'can upload photos', focus: true do
+            res = File.expand_path('../../../../../support/resources', __FILE__)
+            Capybara.using_wait_time(20) do
+              drop_files([ res + '/photo1.jpg', res + '/photo2.jpg' ], 'dropping_area')
+              find(:xpath, "id(\'town_story_article_photos\')/div[3]").should have_xpath('./img')
+              find(:xpath, "id(\'town_story_article_photos\')/div[3]").should have_xpath('./input')
+              find(:xpath, "id(\'town_story_article_photos\')/div[4]").should have_xpath('./img')
+              find(:xpath, "id(\'town_story_article_photos\')/div[4]").should have_xpath('./input')
+              find(:xpath, "id(\'town_story_article_photos\')/div[5]").should have_no_xpath('./img')
+              find(:xpath, "id(\'town_story_article_photos\')/div[5]").should have_no_xpath('./input')
+            end
+            click_on 'Save'
+            click_on 'Application_edit'
+            
+            find(:xpath, "id(\'town_story_article_photos\')/div[3]").should have_xpath('./img')
+            find(:xpath, "id(\'town_story_article_photos\')/div[3]").should have_xpath('./input')
+            find(:xpath, "id(\'town_story_article_photos\')/div[4]").should have_xpath('./img')
+            find(:xpath, "id(\'town_story_article_photos\')/div[4]").should have_xpath('./input')
+            find(:xpath, "id(\'town_story_article_photos\')/div[5]").should have_no_xpath('./img')
+            find(:xpath, "id(\'town_story_article_photos\')/div[5]").should have_no_xpath('./input')
           end
         end
       end

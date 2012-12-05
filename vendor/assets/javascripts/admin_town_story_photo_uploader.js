@@ -84,6 +84,12 @@ var init = function (args) {
             var photo = data.result;
             setCompleted($('#' + id), photo.id, photo.thumb_url);
         },
+        fail: function (e, data) {
+            var id = data.context;
+            console.debug("fail: " + id);
+            console.debug(data);
+            console.debug(e);
+        },
         paramName: 'file'
     });
     

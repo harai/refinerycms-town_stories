@@ -14,12 +14,10 @@ module Refinery
             conditions: {},
             order_by: [],
             paging: false,
-            per_page: false,
             redirect_to_url: "refinery.#{Refinery.route_for_model(model_class, plural: true)}",
             searchable: false,
             search_conditions: '',
             title_attribute: 'title',
-            xhr_paging: false,
             model_class: model_class,
             singular_name: singular_name,
             plural_name: singular_name.pluralize
@@ -116,15 +114,7 @@ module Refinery
           end
 
           define_method :paginate_all_items do |items|
-            paging_options = { page: params[:page] }
-
-            if options[:per_page].present?
-              paging_options.update per_page: options[:per_page]
-            elsif model_class.methods.map(&:to_sym).include?(:per_page)
-              paging_options.update per_page: model_class.per_page
-            end
-
-            items.paginate paging_options # TODO fix?
+            items.page(params[:page] || 1)
           end
 
           define_method :update_item do |item|
@@ -143,7 +133,7 @@ module Refinery
 
             if options[:paging]
               @items = paginate_all_items items
-              render partial: 'items' if options[:xhr_paging] && request.xhr?
+              render partial: 'items' if request.xhr?
             else
               @items = items
             end

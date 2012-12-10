@@ -1,5 +1,5 @@
 <ul id='sortable_list'>
-  <%= render partial: 'town_story_article', collection: @items, as: :item %>
+  <%= render partial: 'item', collection: @items, as: :item %>
 </ul>
 <%= render '/refinery/admin/sortable_list',
             continue_reordering: (local_assigns.keys.include?(:continue_reordering)) ? continue_reordering : true %>

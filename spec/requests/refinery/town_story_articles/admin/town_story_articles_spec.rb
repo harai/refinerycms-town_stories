@@ -38,6 +38,39 @@ describe Refinery do
           end
         end
       
+        describe 'paging' do
+          per = ::Refinery::TownStoryArticles::TownStoryArticle.default_per_page
+          before :each do
+            (1..(per + 1)).each do |i|
+              FactoryGirl.create :town_story_article, title: "article_#{i}"
+            end 
+            visit '/refinery/town_story_articles/'
+          end
+      
+          it 'can limit the number of items in a page' do
+            page.should have_xpath("id('sortable_list')/li[#{per}]")
+            page.should have_no_xpath("id('sortable_list')/li[#{per + 1}]")
+          end
+      
+          it 'can access to the next, previous, last, and first page' do
+            click_on 'Next'
+            page.should have_xpath("id('sortable_list')/li[1]")
+            page.should have_no_xpath("id('sortable_list')/li[2]")
+
+            click_on 'Prev'
+            page.should have_xpath("id('sortable_list')/li[#{per}]")
+            page.should have_no_xpath("id('sortable_list')/li[#{per + 1}]")
+
+            click_on 'Last'
+            page.should have_xpath("id('sortable_list')/li[1]")
+            page.should have_no_xpath("id('sortable_list')/li[2]")
+
+            click_on 'First'
+            page.should have_xpath("id('sortable_list')/li[#{per}]")
+            page.should have_no_xpath("id('sortable_list')/li[#{per + 1}]")
+          end
+        end
+      
         describe 'new page' do
           before :each do
             visit '/refinery/town_story_articles/new'
@@ -73,9 +106,9 @@ describe Refinery do
             page.should have_field('Text', with: 'Too steep.')
           end
       
-          it 'can upload photos', focus: true do
+          it 'can upload photos' do
             res = File.expand_path('../../../../../support/resources', __FILE__)
-            Capybara.using_wait_time(20) do
+            Capybara.using_wait_time(60) do
               drop_files([ res + '/photo1.jpg', res + '/photo2.jpg' ], 'dropping_area')
               find(:xpath, "id(\'town_story_article_photos\')/div[3]").should have_xpath('./img')
               find(:xpath, "id(\'town_story_article_photos\')/div[3]").should have_xpath('./input')

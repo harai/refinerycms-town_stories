@@ -3,8 +3,9 @@ module Refinery
     class TownStoryArticle
       include Mongoid::Document
       include Mongoid::Timestamps
-    
-    
+
+      paginates_per 30
+
       field :title, type: String
       field :text, type: String
       field :photos, type: Array, default: []

@@ -14,3 +14,7 @@ def drop_files(files, drop_area_id)
   # Trigger the fake drop event
   page.execute_script("#{js_script} e = $.Event('drop'); e.originalEvent = {dataTransfer : { files : fileList } }; $('##{drop_area_id}').trigger(e);")
 end
+
+def screenshot
+  page.driver.render "tmp/screenshot.png"
+end

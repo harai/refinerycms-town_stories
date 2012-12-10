@@ -4,7 +4,7 @@ module Refinery
       class TownStoryArticlesController < ::Refinery::AdminController
         include ::Refinery::TownStories::MongoidCrud
     
-        mongoid_crudify '/refinery/town_story_articles/town_story_article', paging: false
+        mongoid_crudify '/refinery/town_story_articles/town_story_article', paging: true
     
         def upload_photo
           uploader = ::Refinery::TownStories::PhotoUploader.new

@@ -24,7 +24,7 @@ CarrierWave.configure do |config|
   config.fog_directory = s3[:bucket]
   host = "http://s3-#{s3_region}.amazonaws.com/#{s3[:bucket]}"
   config.asset_host = host
-  config.fog_endpoint = host
+  # config.fog_endpoint = host
   config.cache_dir = "#{Rails.root}/tmp/uploads"
   config.store_dir = nil
 end

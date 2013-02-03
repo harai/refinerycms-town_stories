@@ -4,7 +4,7 @@ require 'uuidtools'
 CarrierWave.configure do |config|
   conf_path = "#{Rails.root}/config/s3.yml"
   s3 = if File.exists?(conf_path)
-    conf = YAML.load_file(conf_path)
+    conf = YAML.load(ERB.new(File.new(conf_path).read).result)
     {
       key: conf[Rails.env]['access_key_id'],
       secret: conf[Rails.env]['secret_access_key'],

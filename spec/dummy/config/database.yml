@@ -1,0 +1,8 @@
+test:
+  adapter: postgresql
+  encoding: unicode
+  database: <%= ENV['PG_NAME'] %>
+  pool: 5
+  username: postgres
+  password: postgres
+  min_messages: warning

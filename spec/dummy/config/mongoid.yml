@@ -1,0 +1,7 @@
+test:
+  sessions:
+    default:
+      hosts:
+        - localhost
+      database: town_stories_test
+      identity_map_enabled: true

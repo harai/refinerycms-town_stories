@@ -35,3 +35,8 @@ capybara-*html
 #rvm
 .rvmrc
 .rvmrc.*
+/Gemfile.lock
+/spec/test_config.rb
+/spec/dummy/tmp
+/spec/dummy/log
+.settings

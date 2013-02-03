@@ -1,0 +1,5 @@
+ENV['PG_NAME'] = 'town_stories_test'
+ENV['MONGO_NAME'] = 'town_stories_test'
+ENV['S3_BUCKET'] = 'town_stories_test'
+ENV['S3_ID'] = 'HOGEHOGEHOGE'
+ENV['S3_SECRET'] = 'hoge+hoge+hoge'

@@ -17,7 +17,7 @@ en:
             sorry_no_results: Sorry! There are no results found.
             no_items_yet: There are no Town Story Articles yet. Click "Add New Town
               Story Article" to add your first town story article.
-          town_story_article:
+          item:
             view_live_html: View this town story article live <br/><em>(opens in a
               new window)</em>
             edit: Edit this town story article

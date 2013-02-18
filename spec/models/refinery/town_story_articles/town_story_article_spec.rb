@@ -10,7 +10,7 @@ module Refinery
     
       context 'normally' do
         before do
-          @a_id = (TownStoryArticle.create :title => 'A Slope', :text => 'This slope is too steep.').id
+          @a_id = (TownStoryArticle.create title: 'A Slope', text: 'This slope is too steep.', note: 'more detail needed').id
           @article = TownStoryArticle.find(@a_id)
         end
     

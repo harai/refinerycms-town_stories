@@ -9,7 +9,7 @@
 
     <div class='field'>
         <%= f.label :text -%>
-        <%= f.text_area :text, :class => 'widest' -%>
+        <%= f.text_area :text, :class => 'widest text' -%>
     </div>
 
     <div class='field'>
@@ -32,6 +32,11 @@
                 end.to_json
             %>
         <% end -%>
+    </div>
+
+    <div class='field'>
+        <%= f.label :note, 'Private Note' -%>
+        <%= f.text_area :note, :class => 'widest note' -%>
     </div>
 
     <%= render :partial => "/refinery/admin/form_actions",
@@ -59,4 +64,5 @@
 
 <% content_for :stylesheets do %>
     <%= stylesheet_link_tag "admin_town_story_photo_uploader" %>
+    <%= stylesheet_link_tag "refinery/town_story_articles/admin/town_story_articles/style" %>
 <% end %>

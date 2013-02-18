@@ -28,6 +28,7 @@ describe Refinery do
             page.should have_content('Title')
             page.should have_content('Text')
             page.should have_content('Photos')
+            page.should have_content('Private Note')
           end
         
           it 'can edit the existing article' do
@@ -35,6 +36,7 @@ describe Refinery do
             page.should have_field('Title', with: 'Sample Article')
             page.should have_field('Text', with: 'Sample text.')
             find(:xpath, "id(\'town_story_article_photos\')/div[2]").should have_xpath('./img')
+            page.should have_field('Private Note', with: 'Sample note')
           end
         end
       
@@ -79,11 +81,13 @@ describe Refinery do
           it 'can create new item' do
             fill_in 'Title', with: 'Hoge Slope'
             fill_in 'Text', with: 'Too steep.'
+            fill_in 'Private Note', with: 'detail needed'
             click_on 'Save'
             page.should have_content('Hoge Slope')
             click_on 'Application_edit'
             page.should have_field('Title', with: 'Hoge Slope')
             page.should have_field('Text', with: 'Too steep.')
+            page.should have_field('Private Note', with: 'detail needed')
           end
         end
       
@@ -98,12 +102,14 @@ describe Refinery do
           it 'can edit an existing item' do
             fill_in 'Title', with: 'Hoge Slope'
             fill_in 'Text', with: 'Too steep.'
+            fill_in 'Private Note', with: 'detail needed'
             click_on 'Save'
             page.should have_no_content('Sample Article')
             page.should have_content('Hoge Slope')
             click_on 'Application_edit'
             page.should have_field('Title', with: 'Hoge Slope')
             page.should have_field('Text', with: 'Too steep.')
+            page.should have_field('Private Note', with: 'detail needed')
           end
       
           it 'can upload photos' do

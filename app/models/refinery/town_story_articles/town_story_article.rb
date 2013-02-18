@@ -9,8 +9,9 @@ module Refinery
       field :title, type: String
       field :text, type: String
       field :photos, type: Array, default: []
+      field :note, type: String
       
-      attr_accessible :title, :text, :photos
+      attr_accessible :title, :text, :photos, :note
     
       validates_presence_of :title
     

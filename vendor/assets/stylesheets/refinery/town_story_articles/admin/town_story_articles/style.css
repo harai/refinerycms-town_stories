@@ -1,0 +1,7 @@
+#content textarea.note {
+    height: 100px;
+}
+
+#content textarea.text {
+    height: 150px;
+}

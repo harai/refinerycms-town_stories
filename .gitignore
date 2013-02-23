@@ -40,3 +40,4 @@ capybara-*html
 /spec/dummy/tmp
 /spec/dummy/log
 .settings
+/tmp

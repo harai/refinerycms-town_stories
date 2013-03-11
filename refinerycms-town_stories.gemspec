@@ -13,7 +13,7 @@ Gem::Specification.new do |s|
   s.add_dependency('rails', '~> 3.2.11')
   s.add_dependency('refinerycms', '~> 2.0.8')
   s.add_dependency('jquery-rails', '~> 2.0.0')
-  s.add_dependency("mongoid")
+  s.add_dependency("mongoid", '>= 3.1.0')
   s.add_dependency("bson_ext")
   s.add_dependency("carrierwave")
   s.add_dependency("rmagick")
@@ -22,7 +22,7 @@ Gem::Specification.new do |s|
   s.add_dependency("jquery-fileupload-rails")
   s.add_dependency('kaminari')
 
-  s.add_development_dependency("rb-inotify")
+  s.add_development_dependency("rb-inotify", '~> 0.8.8')
   s.add_development_dependency("capybara", '~> 1.1.4')
   s.add_development_dependency("capybara-webkit")
   s.add_development_dependency("headless")

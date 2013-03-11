@@ -13,6 +13,21 @@
     </div>
 
     <div class='field'>
+        <%= f.label :location, 'Location' -%>
+        <div id="locationContainer">
+            <div id="mapContainer"></div>
+            <div id='markerContainer'>Drop<br/></div>
+            <%= f.mongo_fields_for :location do |ff| -%>
+                <%= ff.hidden_field :lat, { id: :lat } -%>
+                <%= ff.hidden_field :lng, { id: :lng } -%>
+            <% end -%>
+        </div>
+        <div id="addressContainer">
+            <%= f.label :address, 'Address' -%> <%= f.text_field :address -%> <a href="#" id="show">Locate this address</a>
+        </div>
+    </div>
+
+    <div class='field'>
         <%= f.label :photos -%>
         <%= f.mongo_fields_for :photos do |p| %>
             <div id="town_story_article_photos" object_name="<%= p.object_name %>">
@@ -51,12 +66,18 @@
 
 <% content_for :javascripts do %>
     <%= javascript_include_tag 'jquery-fileupload/basic' %>
+    <%= javascript_include_tag 'http://maps.google.com/maps/api/js?sensor=false' %>
+    <%= javascript_include_tag 'jquery-gmfa/gmfa_point' %>
     <%= javascript_include_tag 'admin_town_story_photo_uploader' %>
     <script type="text/javascript">
         $(document).ready(function () {
             init({
                 auth: '<%= form_authenticity_token %>',
                 photos: <%= raw @photos %>,
+            });
+            $("#mapContainer").insertGMFAPoint($("#lat"), $("#lng"), $("#markerContainer"), {
+                addressInput: $("#address"),
+                showButton: $("#show"),
             });
         });
     </script>

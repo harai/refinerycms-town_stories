@@ -7,5 +7,7 @@ FactoryGirl.define do
     a.text 'Sample text.'
     a.photos [ 'dummy-dummy-dummy-0001', 'dummy-dummy-dummy-0002' ] # no images stored in S3
     a.note 'Sample note'
+    a.address 'Tokyo'
+    a.location ::Refinery::TownStoryArticles::TownStoryArticle::Location.new(35, 139)
   end
 end

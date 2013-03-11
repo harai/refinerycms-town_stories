@@ -10,7 +10,11 @@ module Refinery
     
       context 'normally' do
         before do
-          @a_id = (TownStoryArticle.create title: 'A Slope', text: 'This slope is too steep.', note: 'more detail needed').id
+          @a_id = (TownStoryArticle.create title: 'A Slope',
+            text: 'This slope is too steep.',
+            note: 'more detail needed',
+            address: 'Tokyo',
+            location: TownStoryArticle::Location.new(35, 139)).id
           @article = TownStoryArticle.find(@a_id)
         end
     
@@ -24,6 +28,16 @@ module Refinery
     
         it 'saves its text' do
           @article.text.should eq 'This slope is too steep.'
+        end
+    
+        it 'saves its address' do
+          @article.address.should eq 'Tokyo'
+        end
+
+        it 'saves its location' do
+          l = @article.location
+          l.lat.should eq 35
+          l.lng.should eq 139
         end
     
         it 'automatically saves its created date' do

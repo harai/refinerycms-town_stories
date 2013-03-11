@@ -5,3 +5,41 @@
 #content textarea.text {
     height: 150px;
 }
+
+#mapContainer {
+    float: left;
+    height: 300px;
+    width: 700px;
+    margin-top: 5px;
+    margin-left: 5px;
+    padding: 20px;
+    border-width: 3px;
+    border-color: #dddddd;
+    border-style: solid;
+}
+
+#markerContainer {
+    float: left;
+    font-weight: bold;
+    margin-top: 5px;
+    height: 70px;
+    width: 30px;
+    padding: 20px;
+    background: #dddddd;
+}
+#locationContainer:after {
+    width: 100%
+}
+#locationContainer:after {
+    content: ""; 
+    display: block; 
+    clear: both;
+}
+
+#addressContainer {
+    margin: 10px;
+}
+#addressContainer label {
+    display: inline;
+    padding-right: 5px;
+}

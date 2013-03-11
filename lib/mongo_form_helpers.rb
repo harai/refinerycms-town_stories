@@ -2,7 +2,7 @@ module ActionView
   module Helpers
     class FormBuilder
       def mongo_fields_for(name, *args, &block)
-        @template.fields_for("#{object_name}[#{name}]", object[name], *args, &block)
+        @template.fields_for("#{object_name}[#{name}]", object.send(name), *args, &block)
       end
     end
     module InstanceTagMethods

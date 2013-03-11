@@ -1,6 +1,39 @@
 module Refinery
   module TownStoryArticles
     class TownStoryArticle
+      class Location
+        attr_reader :lat, :lng
+        
+        def initialize(lat, lng)
+          @lat, @lng = lat, lng
+        end
+  
+        def mongoize
+          [ @lat, @lng ]
+        end
+
+        class << self
+          def mongoize(obj)
+            case obj
+            when Location then obj.mongoize
+            when Hash then Location.new(obj[:lat], obj[:lng]).mongoize
+            else obj
+            end
+          end
+  
+          def demongoize(obj)
+            Location.new(obj[0], obj[1])
+          end
+  
+          def evolve(obj)
+            case obj
+            when Location then obj.mongoize
+            else obj
+            end
+          end
+        end
+      end
+
       include Mongoid::Document
       include Mongoid::Timestamps
 
@@ -10,8 +43,10 @@ module Refinery
       field :text, type: String
       field :photos, type: Array, default: []
       field :note, type: String
+      field :address, type: String
+      field :location, type: Location, default: Location.new(nil, nil)
       
-      attr_accessible :title, :text, :photos, :note
+      attr_accessible :title, :text, :photos, :note, :address, :location
     
       validates_presence_of :title
     

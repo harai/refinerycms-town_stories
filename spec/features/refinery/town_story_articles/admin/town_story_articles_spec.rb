@@ -5,7 +5,7 @@ require File.expand_path('../../../../../support/util', __FILE__)
 describe Refinery do
   describe 'TownStoryArticles' do
     describe 'Admin' do
-      describe 'town_story_articles', type: :request, js: true do
+      describe 'town_story_articles', type: :feature, js: true do
         before :each do
           ::Refinery::TownStoryArticles::TownStoryArticle.destroy_all
           @user = FactoryGirl.create :refinery_user

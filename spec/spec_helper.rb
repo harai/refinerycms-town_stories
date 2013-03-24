@@ -50,11 +50,11 @@ def setup_environment
       DatabaseCleaner.clean
     end
 
-    config.include Warden::Test::Helpers, type: :request
-    config.before :all, type: :request do
+    config.include Warden::Test::Helpers, type: :feature
+    config.before :all, type: :feature do
       Warden.test_mode!
     end
-    config.after :all, type: :request do
+    config.after :all, type: :feature do
       Warden.test_reset!
     end
     Capybara.javascript_driver = :webkit

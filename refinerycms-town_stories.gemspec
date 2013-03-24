@@ -23,7 +23,7 @@ Gem::Specification.new do |s|
   s.add_dependency('kaminari')
 
   s.add_development_dependency("rb-inotify", '~> 0.8.8')
-  s.add_development_dependency("capybara", '~> 1.1.4')
+  s.add_development_dependency("capybara")
   s.add_development_dependency("capybara-webkit")
   s.add_development_dependency("headless")
   s.add_development_dependency("database_cleaner")
@@ -41,4 +41,6 @@ Gem::Specification.new do |s|
   s.add_development_dependency("rb-readline")
   s.add_development_dependency("debugger")
   s.add_development_dependency("unicorn")
+  s.add_development_dependency("konacha")
+  s.add_development_dependency("guard-konacha")
 end

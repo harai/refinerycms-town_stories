@@ -23,6 +23,9 @@ module Refinery
         # end
       # end
 
+      initializer "dummy", after: 'konacha.environment', before: :finisher_hook do |app|
+      end
+
       config.after_initialize do
         Refinery.register_extension(Refinery::TownStories)
       end

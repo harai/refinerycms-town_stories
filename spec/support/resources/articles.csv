@@ -1,0 +1,4 @@
+" title ",text,_id
+" ",will be ignored,ignored column
+Slope1," ",100
+Slope2,steep,100

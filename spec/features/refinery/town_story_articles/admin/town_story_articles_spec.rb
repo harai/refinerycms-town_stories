@@ -33,6 +33,11 @@ describe Refinery do
             page.should have_content('Address')
           end
         
+          it 'can access to bulk upload page' do
+            click_on 'Upload CSV Files'
+            page.should have_content('Drop CSV Files Here')
+          end
+        
           it 'can edit the existing article' do
             click_on 'Application_edit'
             page.should have_field('Title', with: 'Sample Article')
@@ -139,6 +144,23 @@ describe Refinery do
             find(:xpath, "id(\'town_story_article_photos\')/div[4]").should have_xpath('./input')
             find(:xpath, "id(\'town_story_article_photos\')/div[5]").should have_no_xpath('./img')
             find(:xpath, "id(\'town_story_article_photos\')/div[5]").should have_no_xpath('./input')
+          end
+        end
+      
+        describe 'bulk upload' do
+          before :each do
+            visit '/refinery/town_story_articles/bulk_upload'
+          end
+      
+          it 'can upload CSV files' do
+            file = File.expand_path('../../../../../support/resources/articles.csv', __FILE__)
+            Capybara.using_wait_time(10) do
+              drop_files([ file ], 'bulk_drop')
+              find(:xpath, "id(\'result\')/div[1]").should have_content('2 articles inserted.')
+            end
+            visit '/refinery/town_story_articles/'
+            page.should have_content('Slope1')
+            page.should have_content('Slope2')
           end
         end
       end

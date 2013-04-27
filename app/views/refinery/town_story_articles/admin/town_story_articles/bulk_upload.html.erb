@@ -1,0 +1,19 @@
+<div class="dropping_area" id="bulk_drop">
+    <div class="decoration2"><span class="uploader_text">Drop CSV Files Here</span></div>
+</div>
+
+<div id="result"></div>
+
+<% content_for :javascripts do %>
+    <%= javascript_include_tag 'csv' %>
+    <%= javascript_include_tag 'refinery/town_story_articles/admin/town_story_articles/bulk_upload' %>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            init("<%= refinery.url_for controller: 'town_story_articles', action: 'upload_bulk' %>");
+        });
+    </script>
+<% end %>
+
+<% content_for :stylesheets do %>
+    <%= stylesheet_link_tag "refinery/town_story_articles/admin/town_story_articles/style" %>
+<% end %>

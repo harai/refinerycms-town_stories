@@ -43,3 +43,29 @@
     display: inline;
     padding-right: 5px;
 }
+
+.dropping_area {
+    border-color: gray;
+    border-style: dashed;
+    border-width: 5px;
+}
+
+#bulk_drop {
+    width: 500px;
+    height: 200px;
+}
+#bulk_drop .decoration2 {
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+    width: 500px;
+    height: 200px;
+}
+
+#bulk_drop .uploader_text {
+    font-size: 13px;
+    font-weight: bold;
+}
+#bulk_drop.hover {
+    background-color: #ff8;
+}

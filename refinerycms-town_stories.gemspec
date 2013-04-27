@@ -22,7 +22,7 @@ Gem::Specification.new do |s|
   s.add_dependency("jquery-fileupload-rails")
   s.add_dependency('kaminari')
 
-  s.add_development_dependency("rb-inotify", '~> 0.8.8')
+  s.add_development_dependency("rb-inotify", '~> 0.9')
   s.add_development_dependency("capybara")
   s.add_development_dependency("capybara-webkit")
   s.add_development_dependency("headless")

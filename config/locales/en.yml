@@ -10,6 +10,7 @@ en:
         town_story_articles:
           actions:
             create_new: Add New Town Story Article
+            bulk_upload: Upload CSV Files
             reorder: Reorder Town Story Articles
             reorder_done: Done Reordering Town Story Articles
           records:

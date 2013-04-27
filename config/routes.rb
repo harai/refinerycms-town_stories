@@ -8,12 +8,14 @@ Refinery::Core::Engine.routes.append do
   # Admin routes
   namespace :town_story_articles, :path => '' do
     namespace :admin, :path => 'refinery' do
-    resources :town_story_articles, :except => :show do
-      collection do
-        post :upload_photo
+      resources :town_story_articles, :except => :show do
+        collection do
+          post :upload_photo
+          get :bulk_upload
+          post :upload_bulk
+        end
       end
     end
-  end
   end
 
 end

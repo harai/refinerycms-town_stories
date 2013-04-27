@@ -5,7 +5,10 @@
     </li>
   <% end %>
   <li>
-    <%= link_to t('.create_new'), refinery.new_town_story_articles_admin_town_story_article_path,
+    <%= link_to t('.create_new'), refinery.url_for(controller: 'town_story_articles', action: 'new'),
                  :class => "add_icon" %>
+  </li>
+  <li>
+    <%= link_to t('.bulk_upload'), refinery.url_for(controller: 'town_story_articles', action: 'bulk_upload') %>
   </li>
 </ul>

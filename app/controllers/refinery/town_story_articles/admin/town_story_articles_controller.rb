@@ -26,6 +26,18 @@ module Refinery
         end
         
         protected :find_item, :update_item
+
+        def bulk_upload
+        end
+
+        def upload_bulk
+          begin
+            articles = ::Refinery::TownStoryArticles::TownStoryArticle.with(safe: true).create(params[:_json])
+            render json: { n: articles.size }
+          rescue => e
+            render json: { error: e.inspect }
+          end
+        end
       end
     end
   end

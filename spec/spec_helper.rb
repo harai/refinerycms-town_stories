@@ -7,14 +7,10 @@ def setup_environment
   require 'rspec/rails'
   require 'capybara/rails'
   require 'capybara/rspec'
+  require 'capybara-screenshot/rspec'
   require 'database_cleaner'
 
-  require 'headless'
-  headless = Headless.new
-  headless.start
-  at_exit do
-    headless.destroy
-  end
+  require 'capybara/poltergeist'
 
   # Requires supporting files with custom matchers and macros, etc,
   # in ./support/ and its subdirectories.
@@ -57,7 +53,7 @@ def setup_environment
     config.after :all, type: :feature do
       Warden.test_reset!
     end
-    Capybara.javascript_driver = :webkit
+    Capybara.javascript_driver = :poltergeist
   end
 end
 

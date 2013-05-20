@@ -12,5 +12,5 @@ end
 gemspec development_group: :test
 
 # for kaminari's development
-gem 'kaminari', path: '../../../../kaminari'
-gem 'jquery-gmfa-rails', path: '../../../../jquery-gmfa-rails'
+gem 'kaminari', path: '../kaminari'
+gem 'jquery-gmfa-rails', path: '../jquery-gmfa-rails'

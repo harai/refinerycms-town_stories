@@ -154,7 +154,7 @@ describe Refinery do
       
           it 'can upload CSV files' do
             file = File.expand_path('../../../../../support/resources/articles.csv', __FILE__)
-            Capybara.using_wait_time(10) do
+            Capybara.using_wait_time(3) do
               drop_files([ file ], 'bulk_drop')
               find(:xpath, "id(\'result\')/div[1]").should have_content('2 articles inserted.')
             end
